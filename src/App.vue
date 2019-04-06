@@ -12,7 +12,7 @@
         <el-button slot="trigger" icon="el-icon-upload">上传列表</el-button>
       </el-upload>
       <el-button icon="el-icon-document" @click="handlerData">生成</el-button>
-      <el-button icon="el-icon-document" @click="exportExcel('订单统计')">导出</el-button>
+      <el-button icon="el-icon-document" @click="exportExcel('列表')">导出</el-button>
     </template>
     <el-table :data="tableData" id="out-table" style="width: 100%">
       <el-table-column
@@ -53,7 +53,7 @@ export default {
   methods: {
     exportExcel(name) {
       //导出excelÎ
-      let wb = XLSX.utils.table_to_book(document.querySelector("#out-table"));
+      let wb = XLSX.utils.table_to_book(document.querySelector("#out-table"),{raw:true});
       let wbout = XLSX.write(wb, {
         bookType: "xlsx",
         bookSST: true,
